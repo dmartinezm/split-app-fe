@@ -13,17 +13,26 @@
 // 1. use concat(), slice(), or the spread operator for arrays
 // 2. use Object.assign() or object spread of objects
 
-const initialState = {
-  articles: []
-};
+// const rootReducer = (state = {}, { type, payload }) => {
+//   switch (type) {
+//     case "SET_USER":
+//       return payload;
+//     case "CLEAR_USER":
+//       return {};
+//     default:
+//       return state;
+//   }
+// };
 
-function rootReducer(state = initialState, action) {
-  if (action.type === ADD_ARTICLE) {
-    return Object.assign({}, state, {
-      articles: state.articles.concat(action.payload)
-    });
+// export default rootReducer;
+
+export default (state = {}, { type, payload }) => {
+  switch (type) {
+    case "SET_USER":
+      return payload;
+    case "CLEAR_USER":
+      return {};
+    default:
+      return state;
   }
-  return state;
-}
-
-export default rootReducer;
+};
